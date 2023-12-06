@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 using namespace std;
 
 struct Map {
@@ -73,6 +74,7 @@ vector<pair<unsigned long long, unsigned long long>> merge_ranges(vector<pair<un
 int main (){
     Almanac a = Almanac("input.txt");
 
+    auto start = chrono::high_resolution_clock::now();
     vector<pair<unsigned long long, unsigned long long>> current_ranges = merge_ranges(a.seed_ranges);
     vector<pair<unsigned long long, unsigned long long>> new_ranges = {};
 
@@ -115,8 +117,8 @@ int main (){
     }
 
     sort(current_ranges.begin(), current_ranges.end(), [](auto a, auto b){ return a.first < b.first; });
-    cout << current_ranges[0].first;
-
+    auto stop = chrono::high_resolution_clock::now();
+    cout << current_ranges[0].first << " in " << chrono::duration_cast<chrono::microseconds>(stop - start).count() << " microseconds";
     return 0;
 }
 
