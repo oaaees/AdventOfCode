@@ -67,12 +67,19 @@ int main() {
    vector<stack<char>> stacks = get_crate_labels(crates);
 
     for(int i = 0; i < instructions.size(); i++){
-        for(int j = 0; j < instructions[i][0]; j++){
-            unsigned int from = instructions[i][1] - 1;
-            unsigned int to = instructions[i][2] - 1;
+        unsigned int from = instructions[i][1] - 1;
+        unsigned int to = instructions[i][2] - 1;
+        
+        stack<char> temp;
 
-            stacks[to].push(stacks[from].top());
+        for(int j = 0; j < instructions[i][0]; j++){
+            temp.push(stacks[from].top());
             stacks[from].pop();
+        }
+
+        for(int j = 0; j < instructions[i][0]; j++){
+            stacks[to].push(temp.top());
+            temp.pop();
         }
     }
 
