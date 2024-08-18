@@ -67,10 +67,10 @@ int main() {
    vector<stack<char>> stacks = get_crate_labels(crates);
 
     for(int i = 0; i < instructions.size(); i++){
+        unsigned int from = instructions[i][1] - 1;
+        unsigned int to = instructions[i][2] - 1;
+        
         for(int j = 0; j < instructions[i][0]; j++){
-            unsigned int from = instructions[i][1] - 1;
-            unsigned int to = instructions[i][2] - 1;
-
             stacks[to].push(stacks[from].top());
             stacks[from].pop();
         }
