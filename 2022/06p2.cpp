@@ -10,7 +10,7 @@ string get_input(string filename){
     string input = "";
 
     // Read File
-    ifstream ReadFile("input.txt");
+    ifstream ReadFile(filename);
 
     while (getline(ReadFile, line)) {
         input += line;
@@ -41,8 +41,8 @@ int get_som_marker(string s){
     return -1;
 }
 
-int main(){
-    string input = get_input("input.txt");
+int main(int argc, char* argv[]){
+    string input = get_input(argv[1]);
     cout << get_som_marker(input);
 
     return 0;
