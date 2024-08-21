@@ -91,9 +91,7 @@ void extend_down(deque<deque<bool>> &m, position &head_pos, position &tail_pos){
 
 bool are_touching(position &head_pos, position &tail_pos){
     float distance_squared = (head_pos.x - tail_pos.x) * (head_pos.x - tail_pos.x) + (head_pos.y - tail_pos.y) * (head_pos.y - tail_pos.y) ;
-    float distance = 1.1892 + ((distance_squared - 1.4142) / 2.37841); // Taylor series around sqrt(2)
-
-    return (distance < 1.5); // equivalent to (abs(distance - sqrt(2)) < 0.1) 
+    return (distance_squared <= 2.0);  
 }
 
 void move_tail(deque<deque<bool>> &has_tail_been_here, position &head_pos, position &tail_pos){
