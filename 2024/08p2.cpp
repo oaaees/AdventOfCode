@@ -43,12 +43,11 @@ public:
 
                 int A = y2 - y1;
                 int B = x1 - x2;
-                int C = y1 * (x2 - x1) - x1 * (y2 - y1);
+                int C = - y1 * B - x1 * A;
 
                 for (int anti_x = 0; anti_x < size_x; anti_x++){
-                    int anti_y = - A * anti_x / B - C / B;
-                    
-                    if ( A * anti_x + B * anti_y + C == 0 && anti_x >= 0 && anti_x < size_x && anti_y >= 0 && anti_y < size_y) antinodes.push_back({ anti_y, anti_x });
+                    int anti_y = - A * anti_x - C;
+                    if (anti_y >= 0 && anti_y < size_y * B && anti_y % B == 0) antinodes.push_back({ anti_y / B, anti_x });
                 }
 
 
@@ -146,7 +145,6 @@ int main(int argc, char* argv[]) {
     Map map_obj(map);
 
     cout << map_obj.count_unique_antinodes() << endl;
-    map_obj.print_map();
 
     return 0;
 }
