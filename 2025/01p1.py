@@ -34,7 +34,6 @@ def main():
 
     for step in instructions:
         current += step
-        print(str(current) + " moved " + str(step))
         
         if current == 0 or current % 100 == 0:
             count = count + 1

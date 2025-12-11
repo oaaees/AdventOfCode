@@ -35,7 +35,6 @@ def main():
     for step in instructions:
         if step >= 100 or step <= -100:
             rotations = int(step / 100)
-            print("count " + str(abs(rotations)) + " up!")
             count = count + abs(rotations)
             step = step - (rotations * 100)
 
@@ -49,11 +48,8 @@ def main():
         if next < 0:
             next = 100 + next
 
-        print(str(current) + " moved " + str(step) + " to " + str(next))
-
         if (next - current != step and current != 0) or next == 0:
             count = count + 1
-            print("count up!")
 
         current = next
 
