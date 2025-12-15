@@ -29,7 +29,6 @@ def main():
         if text[0][j] == '|':
             count_matrix[0][j] = 1
 
-
     for i in range(rows - 1):
         for j in range(cols):
             if text[i + 1][j] == '^' and count_matrix[i][j] > 0:
@@ -39,8 +38,6 @@ def main():
                     count_matrix[i + 1][j - 1] += count_matrix[i][j]
             else:
                 count_matrix[i + 1][j] += count_matrix[i][j]
-
-    print(count_matrix)
 
     sum = 0
     
